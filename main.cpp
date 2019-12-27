@@ -2,6 +2,7 @@
 
 int main()
 {
-	Zipf obj;
+	theLaws obj;
 	obj.getData();
 }
+

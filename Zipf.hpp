@@ -12,12 +12,18 @@
 				  	//ofstream: Stream class to write on files
 					//ifstream Stream class to read from files
 #include <string>
+#include <iterator> 
+#include <map> 
 
-class Zipf
+
+
+class theLaws
 {
 	public:
 		void getData();
+
 	private:
+		std::map<std::string, int> wordMap;
 
 };
 #endif
