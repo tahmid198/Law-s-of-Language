@@ -19,10 +19,10 @@ void theLaws::getData()
 
     my_file.open(file_name.c_str());
     
-    while(!my_file.eof())
+    while(my_file >> input)
     {
         
-    	my_file >> input; //Get input
+    	//my_file >> input; //Get input
 
         //-------------------------------- this is to remove punctuations in input word------------
         for (int i = 0, len = input.size(); i < len; i++)
@@ -37,7 +37,7 @@ void theLaws::getData()
         //insert with operator[] --> dont know how this works yet
         //for (std::map<std::string, int>::iterator it = wordMap.begin();it !=  wordMap.end(); it++) 
         //{
-        //    wordMap[input]++;  // increment map's value for key 'c'
+        //    wordMap[input]++;  // increment map's value for key 'input'
         //}
 
 
