@@ -19,10 +19,10 @@ void theLaws::getData()
 
     my_file.open(file_name.c_str());
     
-    while(!my_file.eof())
+    while(my_file >> input)
     {
         
-    	my_file >> input; //Get input
+    	//my_file >> input; //Get input
 
         //-------------------------------- this is to remove punctuations in input word------------
         for (int i = 0, len = input.size(); i < len; i++)
@@ -34,17 +34,29 @@ void theLaws::getData()
             }
         }
 
-        //insert with operator[] --> dont know how this works yet
-        //for (std::map<std::string, int>::iterator it = wordMap.begin();it !=  wordMap.end(); it++) 
-        //{
-        //    wordMap[input]++;  // increment map's value for key 'c'
-        //}
+        //insert new word with operator[]
+        //wordMap[input]++;  // increment map's value for key 'input'
+    
+        
+        
+        // check if key 'c' exists in the map or not
+        std::map<std::string,int>::iterator it = wordMap.find(input);
 
-
-        wordMap.insert(std::pair<std::string, int>(input, 1));  //std::insert cannot mutate existing values; operator[] can, if you want to use insert(), you would need to erase the value first
+        // key already present in the map
+        if (it != wordMap.end()) 
+        {
+            it->second++;   // increment map's value for key 'c'
+        }
+        // key not found
+        else 
+        {
+            wordMap.insert(std::pair<std::string, int>(input, 1));  //std::insert cannot mutate existing values; operator[] can, if you want to use insert(), you would need to erase the value first
+        }
+        
 
     	std::cout << input << " "; //Print output 
     }
+    std::cout << std::endl;
     
     for (std::map<std::string, int>::iterator it = wordMap.begin();it !=  wordMap.end(); it++)
     {
