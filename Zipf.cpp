@@ -34,11 +34,11 @@ void theLaws::getData()
             }
         }
 
-        //insert new word with operator[]
-        //wordMap[input]++;  // increment map's value for key 'input'
+        //increment/insert new word with operator[]
+        wordMap[input]++;  // increment map's value for key 'input'
     
         
-        
+        /*
         // check if key 'c' exists in the map or not
         std::map<std::string,int>::iterator it = wordMap.find(input);
 
@@ -52,10 +52,11 @@ void theLaws::getData()
         {
             wordMap.insert(std::pair<std::string, int>(input, 1));  //std::insert cannot mutate existing values; operator[] can, if you want to use insert(), you would need to erase the value first
         }
-        
+        */
 
     	std::cout << input << " "; //Print output 
     }
+
     std::cout << std::endl;
     
     for (std::map<std::string, int>::iterator it = wordMap.begin();it !=  wordMap.end(); it++)
