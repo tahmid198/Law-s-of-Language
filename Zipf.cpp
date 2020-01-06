@@ -6,7 +6,7 @@
 
 #include "Zipf.hpp"
 
-//---------------------------------BEGIN function to read/write textFile data-----------
+//---------------------------------BEGIN function to read/write textFile data--------------------
 void theLaws::getData()
 {
 	std::string input; 
@@ -14,15 +14,23 @@ void theLaws::getData()
 	std::string file_name; 
 	std::fstream my_file;  //using fstream to read and write file
 
-	std::cout << "What file do you want to open?";
+	std::cout << "What file do you want to open?" << std::endl;
     std::cin >> file_name;
 
     my_file.open(file_name.c_str());
     
     while(my_file >> input)
     {
-        
-    	//my_file >> input; //Get input
+        //my_file >> input; //Get input
+
+        //boost::to_lower(input);
+        //convert string to lower case
+
+        //-------------------------------this is to make input str lowercase---------------------
+        for(char &c:input)
+        {
+           c = tolower(c);
+        } //if words are not the same cases program will identify the an uppercase word and lowercase word as two diffrent words (Ex. You & you)
 
         //-------------------------------- this is to remove punctuations in input word------------
         for (int i = 0, len = input.size(); i < len; i++)
