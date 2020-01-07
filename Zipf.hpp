@@ -15,6 +15,8 @@
 #include <iterator> 
 #include <map> 
 #include <string>
+#include <vector>
+#include <algorithm> // for sort function
 //#include <boost/algorithm/string.hpp>
 
 
@@ -23,9 +25,12 @@ class theLaws
 {
 	public:
 		void getData();
+		void sortMap();
+		//bool sortByVal(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b); 
 
 	private:
-		std::map<std::string, int> wordMap;
+		std::map<std::string, int> wordMap; //create the map
+
 
 };
 #endif

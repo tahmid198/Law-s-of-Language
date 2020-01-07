@@ -26,13 +26,14 @@ void theLaws::getData()
         //boost::to_lower(input);
         //convert string to lower case
 
-        //-------------------------------this is to make input str lowercase---------------------
+        //-------------------------------------------conver each char in input str to lowercase---------------------
         for(char &c:input)
         {
            c = tolower(c);
         } //if words are not the same cases program will identify the an uppercase word and lowercase word as two diffrent words (Ex. You & you)
 
-        //-------------------------------- this is to remove punctuations in input word------------
+
+        //--------------------------------this is to remove punctuations in input str---------------
         for (int i = 0, len = input.size(); i < len; i++)
         {
             if (ispunct(input[i]))
@@ -42,10 +43,12 @@ void theLaws::getData()
             }
         }
 
+        //---------------------------------increment the value of each WORD----------------------------
+
         //increment/insert new word with operator[]
         wordMap[input]++;  // increment map's value for key 'input'
     
-        
+        //increment using the insert() function
         /*
         // check if key 'c' exists in the map or not
         std::map<std::string,int>::iterator it = wordMap.find(input);
@@ -66,12 +69,69 @@ void theLaws::getData()
     }
 
     std::cout << std::endl;
-    
+
+    my_file.close(); // Close file
+}
+//-------------------------------------END function to read/write textFile data--------------------------
+
+
+//-------------------------------------BEGIN sort function need to sort the map--------------------------
+
+//this shorts the map using a vecor of pairs, it copies the map into a vector of key-values pairs, and then 
+//sorts the vector in decending order 
+
+
+//compartor function
+bool sortByVal(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b) 
+{ 
+    return (a.second > b.second); 
+} 
+
+void theLaws::sortMap()
+{
+    std::cout << "The map, sorted by keys, is: " << std::endl;
     for (std::map<std::string, int>::iterator it = wordMap.begin();it !=  wordMap.end(); it++)
     {
         std::cout << it->first << "::" << it->second << std::endl;
     }
 
-    my_file.close(); // Close file
+    // create a empty vector of pairs
+    std::vector<std::pair<std::string, int>> vec;
+
+    // copy key-value pairs from the map to the vector
+   
+    for ( std::map<std::string, int>::iterator it2 = wordMap.begin(); it2 != wordMap.end(); it2++) 
+    {
+        vec.push_back(make_pair(it2->first, it2->second));
+    }
+
+    //sort the vector by increasing order of its pair's second value
+    std::sort(vec.begin(), vec.end(), sortByVal); 
+
+    // print the vector
+    std::cout << "The map, sorted by value is: " << std::endl;
+    for (int i = 0; i < vec.size(); i++)
+    {
+        std::cout << vec[i].first << ":: " << vec[i].second << std::endl;
+    }
+    
 }
-//----------------------------------END function to read/write textFile data------------
+//-----------------------------------------------END sort function---------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
