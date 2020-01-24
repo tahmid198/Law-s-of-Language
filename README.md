@@ -1,4 +1,4 @@
-i#ZIPF'S LAW#
+#ZIPF'S LAW#
 
 This law claims that in any lenghty text consisting of meaningful thought, a pattern will be exhibited among its words. 
 
